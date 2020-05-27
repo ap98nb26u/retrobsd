@@ -13,6 +13,11 @@
  * with a '/', like "/usr/games/lib/atc/".
  */
 
+/* avoid problems with cygpath in msys environment. see Makefile also. */
+#ifdef __MSYS__
+#define DEST	"/games/lib/atc"
+#endif
+
 char	SPECIAL_DIR[] =		DEST;
 
 /*

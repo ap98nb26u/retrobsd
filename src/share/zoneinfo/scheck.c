@@ -38,7 +38,11 @@ char *	format;
 		*tp++ = '*';
 		if (*fp == '*')
 			++fp;
+#ifdef __STDC__
+		while (isascii((int)*fp) && isdigit((int)*fp))
+#else
 		while (isascii(*fp) && isdigit(*fp))
+#endif
 			*tp++ = *fp++;
 		if (*fp == 'l' || *fp == 'h')
 			*tp++ = *fp++;

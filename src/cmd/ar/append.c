@@ -40,6 +40,7 @@
 #   include <sys/types.h>
 #   include <sys/select.h>
 #   include <sys/stat.h>
+#   include <sys/file.h> /* for L_XTND.  */
 #   include <fcntl.h>
 #   include <stdint.h>
 #   include <string.h>

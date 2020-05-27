@@ -112,7 +112,6 @@ main(argc, argv)
 	int argc;
 	char **argv;
 {
-	extern int optind;
 	int c;
 	char *p;
 	int (*fcall)() = 0;
@@ -253,4 +252,7 @@ main(argc, argv)
         if (! fcall)
                 exit(1);
 	exit((*fcall)(argv));
+#ifdef __GNUC__
+	__builtin_unreachable();
+#endif
 }

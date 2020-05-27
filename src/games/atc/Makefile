@@ -10,7 +10,11 @@ include $(TOPSRC)/target.mk
 #include $(TOPSRC)/cross.mk
 
 CFLAGS          += -Os -g -Werror -Wall
-CFLAGS          += -DBSD -DDEST=\"/games/lib/atc/\"
+# avoid problems with cyrpath in msys environment. see tunable.c also.
+CFLAGS          += -DBSD
+ifneq ($(origin __MSYS__),undefined)
+CFLAGS          += -DDEST=\"/games/lib/atc/\"
+endif
 #CFLAGS          += -DSYSV -DDEST=\"games/\"
 YFLAGS          = -d
 LEX             = lex

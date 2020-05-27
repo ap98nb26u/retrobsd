@@ -5,12 +5,15 @@ include $(TOPSRC)/target.mk
 OBJS            = cc.o
 
 CFLAGS		+= -Werror -Wall
-CFLAGS          += -DVERSSTR=\"1.0\" \
-                   -DSTDINC=\"/include\" \
+# avoid problems with cygpath in msys environment. see cc.c also.
+CFLAGS          += -DVERSSTR=\"1.0\"
+ifneq ($(origin __MSYS__),undefined)
+CFLAGS          += -DSTDINC=\"/include\" \
                    -DLIBDIR=\"/lib\" \
                    -DLIBEXECDIR=\"/libexec\" \
                    -DCRT0FILE=\"/lib/crt0.o\" \
                    -DCRT0FILE_PROFILE=\"/lib/mcrt0.o\"
+endif
 
 all:            cc
 

@@ -70,6 +70,15 @@
  * Many specific definitions, should be declared elsewhere.
  */
 
+/* avoid problems with cygpath in msys environment. see Makefile also. */
+#ifdef __MSYS__
+#define STDINC		"/include"
+#define LIBDIR		"/lib"
+#define LIBEXECDIR	"/libexec"
+#define CRT0FILE	"/lib/crt0.o"
+#define CRT0FILE_PROFILE "/lib/mcrt0.o"
+#endif
+
 #ifndef STDINC
 #define	STDINC	  	"/usr/include"
 #endif

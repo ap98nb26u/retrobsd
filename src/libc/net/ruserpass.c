@@ -616,7 +616,7 @@ static	char	preS[48];
 
 static
 blkencrypt(block, edflag)
-char *block;
+char *block, edflag;
 {
 	int i, ii;
 	register t, j, k;

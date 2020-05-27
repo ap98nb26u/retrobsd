@@ -15,7 +15,9 @@
 #endif
 
 extern char **environ;
+#if !(defined(__MSYS__) && !defined(__INSIDE_CYGWIN__))
 extern char *tzname[2];
+#endif
 
 extern char *imalloc(int);
 extern void tzset(void);

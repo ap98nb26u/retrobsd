@@ -75,7 +75,7 @@ static unsigned char *create_nand_flash_file (m_uint32_t block_no)
     unsigned char *ret;
 
     /*create nand flash file when writing */
-    snprintf (file_path, sizeof (file_path), "%s/%s.%d",
+    (void)snprintf (file_path, sizeof (file_path), "%s/%s.%d",
         NAND_FLASH_1G_FILE_DIR, NAND_FLASH_1G_FILE_PREFIX, block_no);
     fd = open (file_path, O_RDWR | O_CREAT,
         S_IREAD | S_IWRITE | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);

@@ -6,6 +6,7 @@
 #   include <sys/types.h>
 #   include <stdio.h>
 #   include <string.h>
+#   include <strings.h> /* for bcopy, bcmp.  */
 #   include <stdlib.h>
 #   include <errno.h>
 #   include <ctype.h>

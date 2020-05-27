@@ -1363,7 +1363,11 @@ register char *	cp;
 	array = (char **) emalloc((strlen(cp) + 1) * sizeof *array);
 	nsubs = 0;
 	for ( ; ; ) {
+#ifdef __STDC__
+		while (isascii((int)*cp) && isspace((int)*cp))
+#else
 		while (isascii(*cp) && isspace(*cp))
+#endif
 			++cp;
 		if (*cp == '\0' || *cp == '#')
 			break;
@@ -1376,8 +1380,13 @@ register char *	cp;
 					++dp;
 				else	error("Odd number of quotation marks");
 		} while (*cp != '\0' && *cp != '#' &&
+#ifdef __STDC__
+			(!isascii((int)*cp) || !isspace((int)*cp)));
+		if (isascii((int)*cp) && isspace((int)*cp))
+#else
 			(!isascii(*cp) || !isspace(*cp)));
 		if (isascii(*cp) && isspace(*cp))
+#endif
 			++cp;
 		*dp = '\0';
 	}

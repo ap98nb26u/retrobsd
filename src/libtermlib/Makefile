@@ -35,10 +35,10 @@ termcap:
 	cd profiled; $(AR) cr ../../libtermcap_p.a ${POBJS}
 
 install: all
-#	cp ../libtermcap.a ${DESTDIR}/lib/libtermcap.a
-#	@-rm -f ${DESTDIR}/lib/libtermlib.a
-#	ln ${DESTDIR}/lib/libtermcap.a ${DESTDIR}/lib/libtermlib.a
-#	$(RANLIB) ${DESTDIR}/lib/libtermcap.a
+	cp ../libtermcap.a ${DESTDIR}/lib/libtermcap.a
+	@-rm -f ${DESTDIR}/lib/libtermlib.a
+	ln ${DESTDIR}/lib/libtermcap.a ${DESTDIR}/lib/libtermlib.a
+	$(RANLIB) ${DESTDIR}/lib/libtermcap.a
 	$(MAKE) -C termcap install
 #	cp ../libtermcap_p.a ${DESTDIR}/lib/libtermcap_p.a
 #	@-rm -f ${DESTDIR}/lib/libtermlib_p.a

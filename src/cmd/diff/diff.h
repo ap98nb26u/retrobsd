@@ -10,6 +10,13 @@
 #include <sys/dir.h>
 #include <signal.h>
 
+/* avoid problems with cygpath in msys environment. see Makefile also. */
+#ifdef __MSYS__
+#define DIFF		"/bin/diff"
+#define DIFFH		"/libexec/diffh"
+#define PR		"/bin/pr"
+#endif
+
 /*
  * Output format options
  */

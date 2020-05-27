@@ -85,8 +85,8 @@ struct {
     struct text ptext[101];             /* object descriptions          */
 
     #define LOCSIZ  141                 /* number of locations          */
-    struct text ltext[LOCSIZ];          /* long loc description         */
-    struct text stext[LOCSIZ];          /* short loc descriptions       */
+    struct text ltext[LOCSIZ+1];        /* long loc description         */
+    struct text stext[LOCSIZ+1];        /* short loc descriptions       */
 
     struct travlist *travel[LOCSIZ];    /* direcs & conditions of travel*/
 

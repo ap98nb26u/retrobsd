@@ -9,7 +9,10 @@ OBJS		= diff.o diffdir.o diffreg.o
 DIFF            = /bin/diff
 DIFFH           = /libexec/diffh
 PR              = /bin/pr
+# avoid problems with cyrpath in msys environment. see diff.h also.
+ifneq ($(origin __MSYS__),undefined)
 CFLAGS          += -DDIFF='"${DIFF}"' -DDIFFH='"${DIFFH}"' -DPR='"${PR}"'
+endif
 
 all:            diff diffh
 

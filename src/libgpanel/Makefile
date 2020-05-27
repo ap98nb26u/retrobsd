@@ -19,6 +19,9 @@ $(MAN):         $(MANSRC)
 
 install: 	all
 		cp $(MAN) $(DESTDIR)/share/man/cat3/
+		$(INSTALLDIR) $(DESTDIR)/lib
+		$(INSTALL) ../libgpanel.a $(DESTDIR)/lib/libgpanel.a
+		$(RANLIB) $(DESTDIR)/lib/libgpanel.a
 
 clean:
 		rm -f *.o a.out core test errs ../libgpanel*.a $(MAN)

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 1985, 1993
- *	The Regents of the University of California.  All rights reserved.
+ * Copyright (c) 1987, 1993, 1994, 1996
+ *  The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -12,8 +12,8 @@
  *    documentation and/or other materials provided with the distribution.
  * 3. All advertising materials mentioning features or use of this software
  *    must display the following acknowledgement:
- *	This product includes software developed by the University of
- *	California, Berkeley and its contributors.
+ *  This product includes software developed by the University of
+ *  California, Berkeley and its contributors.
  * 4. Neither the name of the University nor the names of its contributors
  *    may be used to endorse or promote products derived from this software
  *    without specific prior written permission.
@@ -30,30 +30,25 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-void
-abort()
-{
-	sigset_t mask;
+#ifndef __GETOPT_H__
+#define __GETOPT_H__
 
-	(void)sigfillset(&mask);
-	/*
-	 * don't block SIGABRT to give any handler a chance; we ignore
-	 * any errors -- X311J doesn't allow abort to return anyway.
-	 */
-	(void)sigdelset(&mask, SIGABRT);
-	(void)sigprocmask(SIG_SETMASK, &mask, (sigset_t *)NULL);
-	(void)kill(getpid(), SIGABRT);
+#ifndef __INSIDE_CYGWIN__
+extern int opterr;	/* if error message should be printed */
+extern int optind;	/* index into parent argv vector */
+extern int optopt;	/* character checked for validity */
+extern int optreset;	/* reset getopt */
+extern char*optarg;	/* argument associated with option */
+#else
+#include <glob.h>
+extern int __declspec(dllimport) opterr;	/* if error message should be printed */
+extern int __declspec(dllimport) optind;	/* index into parent argv vector */
+extern int __declspec(dllimport) optopt;	/* character checked for validity */
+extern int __declspec(dllimport) optreset;	/* reset getopt */
+extern char __declspec(dllimport) *optarg;	/* argument associated with option */
+#endif
 
-	/*
-	 * if SIGABRT ignored, or caught and the handler returns, do
-	 * it again, only harder.
-	 */
-	(void)signal(SIGABRT, SIG_DFL);
-	(void)sigprocmask(SIG_SETMASK, &mask, (sigset_t *)NULL);
-	(void)kill(getpid(), SIGABRT);
-	exit(1);
-}
+int getopt (int, char * const *, const char *);
+
+#endif /* __GETOPT_H__ */

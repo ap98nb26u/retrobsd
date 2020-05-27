@@ -13,7 +13,7 @@ pause()
 {
 	sigset_t set;
 
-	sigemptyset(&set);
-	sigsuspend(&set);
+	(void)sigemptyset(&set);
+	(void)sigsuspend(&set);
 	return 0;
 }

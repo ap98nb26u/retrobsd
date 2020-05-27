@@ -103,3 +103,7 @@ LIBS		= -lc
 
 # Enable mips16e instruction set by default
 CFLAGS		+= -mips16
+
+ifeq ($(shell uname -o),Msys)
+CFLAGS		+= -D__MSYS__
+endif

@@ -178,7 +178,11 @@ nametodev(name, defunit)
         fprintf(stderr, "config: internal error, nametodev\n");
         exit(1);
     }
+#ifdef __STDC__
+    while (*cp && !isdigit((int)*cp))
+#else
     while (*cp && !isdigit(*cp))
+#endif
         cp++;
     unit = *cp ? atoi(cp) : defunit;
     if (unit < 0 || unit > 31) {
@@ -189,7 +193,11 @@ nametodev(name, defunit)
     }
     if (*cp) {
         *cp++ = '\0';
+#ifdef __STDC__
+        while (*cp && isdigit((int)*cp))
+#else
         while (*cp && isdigit(*cp))
+#endif
             cp++;
     }
     partition = *cp ? *cp : '`';

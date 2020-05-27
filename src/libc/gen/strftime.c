@@ -246,11 +246,7 @@ _fmt(format, t)
 }
 
 size_t
-strftime(s, maxsize, format, t)
-	char *s;
-	size_t maxsize;
-	const char *format;
-	const struct tm *t;
+strftime(char *s, size_t maxsize, const char *format, const struct tm *t)
 {
 
 	pt = s;

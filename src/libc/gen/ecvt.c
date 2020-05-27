@@ -12,6 +12,7 @@ static char *
 cvt(arg, ndigits, decpt, sign, eflag)
         double arg;
         int ndigits, *decpt, *sign;
+        char eflag;
 {
 	register int r2;
 	double fi, fj;

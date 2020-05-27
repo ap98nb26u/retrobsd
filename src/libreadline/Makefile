@@ -14,6 +14,9 @@ all:            ../libreadline.a
 install: 	all readline.h history.h
 		install -d $(DESTDIR)/include/readline/
 		cp -p readline.h history.h $(DESTDIR)/include/readline/
+		$(INSTALLDIR) $(DESTDIR)/lib
+		$(INSTALL) ../libreadline.a $(DESTDIR)/lib/libreadline.a
+		$(RANLIB) $(DESTDIR)/lib/libreadline.a
 
 clean:
 		rm -f *~ *.o a.out ../libreadline*.a

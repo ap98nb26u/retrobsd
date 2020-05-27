@@ -53,6 +53,7 @@
 #   ifndef _PATH_ARTMP
 #       define _PATH_ARTMP  "/tmp/ar.XXXXXX"
 #   endif
+#   include <sys/types.h> /* for off_t.  */
 #endif
 
 /* Ar(1) options. */
