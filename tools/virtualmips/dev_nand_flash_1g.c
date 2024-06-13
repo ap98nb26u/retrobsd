@@ -68,14 +68,14 @@ m_uint8_t nand_status = NAND_STATUS_READY | NAND_STATUS_WP;
 /*Create nand flash file. 1 block 1 file.*/
 static unsigned char *create_nand_flash_file (m_uint32_t block_no)
 {
-    char file_path[64];
+    char file_path[269];
     char page[NAND_FLASH_1G_PAGE_SIZE];
     int i, n;
     int fd;
     unsigned char *ret;
 
     /*create nand flash file when writing */
-    snprintf (file_path, sizeof (file_path), "%s/%s.%d",
+    (void)snprintf (file_path, sizeof (file_path), "%s/%s.%d",
         NAND_FLASH_1G_FILE_DIR, NAND_FLASH_1G_FILE_PREFIX, block_no);
     fd = open (file_path, O_RDWR | O_CREAT,
         S_IREAD | S_IWRITE | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
@@ -373,7 +373,7 @@ static int load_nand_flash_file (nand_flash_1g_data_t * d)
     int i, j = 0;
     struct dirent *ent = NULL;
     DIR *p_dir;
-    char file_path[64];
+    char file_path[269];
     char *file_name;
     char block_number[16];
     int fd;
@@ -392,7 +392,7 @@ static int load_nand_flash_file (nand_flash_1g_data_t * d)
         //we only take care file
         if (ent->d_type == DT_DIR)
             continue;
-        snprintf (file_path, sizeof (file_path), "%s/%s",
+        (void)snprintf (file_path, sizeof (file_path), "%s/%s",
             NAND_FLASH_1G_FILE_DIR, ent->d_name);
         if (get_file_size (file_path) != NAND_FLASH_1G_BLOCK_SIZE)
             continue;

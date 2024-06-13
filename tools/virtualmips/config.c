@@ -71,7 +71,11 @@ static int eat_whitespace (FILE *fp)
 static int find_continuation (char *line, int pos)
 {
     pos--;
+#ifdef __STDC__
+    while (pos >= 0 && isspace ((int)line [pos]))
+#else
     while (pos >= 0 && isspace (line [pos]))
+#endif
         pos--;
     if (pos >= 0 && line[pos] == '\\')
         return pos;
@@ -176,7 +180,11 @@ static void parse_parameter (FILE *fp,
             if (i < 0)
                 c = 0;
             else {
+#ifdef __STDC__
+                for (end=i; (end >= 0) && isspace ((int)bufr[end]); end--)
+#else
                 for (end=i; (end >= 0) && isspace (bufr[end]); end--)
+#endif
                     ;
                 c = getc (fp);
             }

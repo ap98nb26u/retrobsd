@@ -104,7 +104,6 @@
 #include "config.h"
 #include <ctype.h>
 #include <stdio.h>
-#include <sys/stat.h>
 
 struct  device cur;
 struct  device *curp = 0;

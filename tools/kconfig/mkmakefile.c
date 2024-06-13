@@ -117,8 +117,13 @@ int opteq(cp, dp)
 
     for (; ; cp++, dp++) {
         if (*cp != *dp) {
+#ifdef __STDC__
+            c = isupper((int)*cp) ? tolower((int)*cp) : *cp;
+            d = isupper((int)*dp) ? tolower((int)*dp) : *dp;
+#else
             c = isupper(*cp) ? tolower(*cp) : *cp;
             d = isupper(*dp) ? tolower(*dp) : *dp;
+#endif
             if (c != d)
                 return (0);
         }
@@ -385,7 +390,11 @@ void do_rules(f)
         special = ftp->f_special;
         if (special == 0) {
             static char cmd[128];
+#ifdef __STDC__
+            sprintf(cmd, "${COMPILE_%c}", toupper((int)och));
+#else
             sprintf(cmd, "${COMPILE_%c}", toupper(och));
+#endif
             special = cmd;
         }
         *cp = och;
@@ -572,7 +581,11 @@ raise(str)
     register char *cp = buf;
 
     while (*str) {
+#ifdef __STDC__
+        *cp++ = islower((int)*str) ? toupper((int)*str++) : *str++;
+#else
         *cp++ = islower(*str) ? toupper(*str++) : *str++;
+#endif
     }
     *cp = 0;
     return buf;

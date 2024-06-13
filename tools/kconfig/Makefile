@@ -1,4 +1,4 @@
-CC		= gcc -g -m32
+CC		= gcc -g
 CFLAGS		= -O -Wall -Werror 
 YACC            = byacc -d
 DESTDIR		= /usr/local

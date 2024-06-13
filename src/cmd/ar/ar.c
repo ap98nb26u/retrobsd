@@ -112,7 +112,6 @@ main(argc, argv)
 	int argc;
 	char **argv;
 {
-	extern int optind;
 	int c;
 	char *p;
 	int (*fcall)() = 0;

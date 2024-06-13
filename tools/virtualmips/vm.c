@@ -164,7 +164,7 @@ vm_instance_t *vm_create (const char *name, int machine_type)
 
     vm = malloc (sizeof (*vm));
     if (!vm) {
-        fprintf (stderr, "VM %s: unable to create new instance!\n", name);
+        fprintf (stderr, "VM: unable to create new instance!\n");
         return NULL;
     }
 
@@ -180,7 +180,7 @@ vm_instance_t *vm_create (const char *name, int machine_type)
 
     vm->name = strdup (name);
     if (!name) {
-        fprintf (stderr, "VM %s: unable to store instance name!\n", name);
+        fprintf (stderr, "VM: unable to store instance name!\n");
         goto err_name;
     }
 

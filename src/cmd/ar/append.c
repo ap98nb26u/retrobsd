@@ -37,6 +37,7 @@
 #   include <stdio.h>
 #   include <time.h>
 #   include <unistd.h>
+#   include <sys/file.h> /* for L_XTND */
 #   include <sys/types.h>
 #   include <sys/select.h>
 #   include <sys/stat.h>

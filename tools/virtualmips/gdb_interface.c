@@ -345,7 +345,7 @@ static int putpkt (int fd, char *buf)
 static void attach_gdb (vm_instance_t * vm)
 {
     struct sockaddr_in sockaddr1;
-    unsigned int tmp;
+    socklen_t tmp;
     int gdb_fd;
 
     if (!vm->gdb_debug_from_poll)

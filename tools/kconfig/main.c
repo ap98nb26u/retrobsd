@@ -31,8 +31,10 @@
  * SUCH DAMAGE.
  */
 #include <sys/types.h>
+#ifndef __STDC__
 #include <sys/stat.h>
 #include <sys/file.h>
+#endif
 #include <unistd.h>
 #include <ctype.h>
 #include "y.tab.h"
